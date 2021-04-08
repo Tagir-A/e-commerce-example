@@ -1,21 +1,28 @@
 import Head from 'next/head'
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 
-import firebase from '../firebase/initFirebase'
+import { supabase } from '../supabase/initSupabase'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export async function getStaticProps(context) {
+  const { data, error } = await supabase
+    .from('items')
+    .select()
 
-
-  useEffect(() => {
-    const loadData = async () => {
-  const db = firebase.firestore()
-  const data = await db.collection('items').get()
-  console.log('data: ', data)
+  if (!data) {
+    return {
+      notFound: true,
     }
-    loadData()
-  }, [])
+  }
 
+  return {
+    props: { data }, // will be passed to the page component as props
+  }
+}
+
+
+export default function Home({ data }) {
+  console.log('data: ', data)
   return (
     <div className={styles.container}>
       <Head>
