@@ -1,3 +1,3 @@
 tasks:
   - init: npm install
-    command: npm dev
+    command: npm run dev

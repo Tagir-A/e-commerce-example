@@ -6,9 +6,8 @@ import styles from '../styles/Home.module.css'
 
 export async function getStaticProps(context) {
   const { data, error } = await supabase
-    .from('items')
-    .select()
-
+    .from('Items')
+    .select('*')
   if (!data) {
     return {
       notFound: true,
@@ -71,6 +70,13 @@ export default function Home({ data }) {
         </div>
       </main>
 
+      <aside>
+        <ul>
+          {data.map(item => {
+            return <li key={item.__EMPTY}>{item.name}</li>
+          })}
+        </ul>
+      </aside>
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
