@@ -1,4 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Create a single supabase client for interacting with your database 
-export const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+let supabase = null
+
+export function initSupabase(url, key) {
+  if (!supabase) {
+    supabase = createClient(url, key)
+  }
+  return supabase
+}
