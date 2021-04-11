@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 
 import { Header } from "../components/Header"
 import { Grid } from "../components/Grid"
@@ -26,11 +27,15 @@ function Shop({ data }) {
       <div className="p-2">
         <Grid>
           {data.map((item) => (
-            <Grid.Item>
+            <Grid.Item key={item.__EMPTY}>
               <Grid.ItemImage src={item.image} />
               <Grid.ItemContent>
                 <Grid.ItemTitle>
-                  <Text>{item.name}</Text>
+                  <Link href={`/items/${encodeURIComponent(item.__EMPTY)}`}>
+                    <a>
+                      <Text>{item.name}</Text>
+                    </a>
+                  </Link>
                 </Grid.ItemTitle>
               </Grid.ItemContent>
             </Grid.Item>

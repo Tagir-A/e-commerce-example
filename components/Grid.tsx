@@ -1,4 +1,5 @@
 import React from "react"
+import Zoom from "react-medium-image-zoom"
 
 interface Props {
   children: React.ReactNode
@@ -22,8 +23,12 @@ const GridItemTitle = ({ children }: Props) => {
 
 const GridItemImage = ({ src }: { src: string }) => {
   return (
-    <div className="row-span-2 bg-gray-700 bg-cover bg-center" style={{ backgroundImage: `url(${src})` }}>
-      {/* <img src={src} /> */}
+    <div className="row-span-2 w-full h-full">
+      <Zoom wrapStyle={{ width: "100%", height: "100%" }}>
+        <div className="h-full w-full bg-gray-700 bg-cover bg-center" style={{ backgroundImage: `url(${src})` }}>
+          {/* <img src={src} /> */}
+        </div>
+      </Zoom>
     </div>
   )
 }
