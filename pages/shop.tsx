@@ -5,6 +5,7 @@ import { Header } from "../components/Header"
 import { Grid } from "../components/Grid"
 import { Text } from "../components/Text"
 import { initSupabase } from "../supabase/initSupabase"
+import { BottomNavigation } from "../components/BottomNavigation"
 
 export async function getStaticProps(context) {
   const supabase = initSupabase(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY)
@@ -41,6 +42,7 @@ function Shop({ data }) {
             </Grid.Item>
           ))}
         </Grid>
+        <BottomNavigation />
       </div>
     </div>
   )
