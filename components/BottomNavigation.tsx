@@ -4,7 +4,7 @@ interface Props {}
 
 export const BottomNavigation = (props: Props) => {
   return (
-    <div className="w-full h-12 bg-indigo-100 fixed inset-x-0 bottom-0 flex justify-between">
+    <div className="w-full h-12 bg-indigo-100 fixed inset-x-0 bottom-0 flex justify-between md:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path
           strokeLinecap="round"
